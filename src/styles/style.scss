@@ -28,8 +28,8 @@ $accent-color:#e4558c;
 }
 
 .wrapper {
-  width: 30%;
-  height: 850px;
+  width: 28%;
+  height: 80%;
   background-color: $background-color-light;
 }
 
@@ -81,7 +81,7 @@ $accent-color:#e4558c;
 }
 
 .body {
-  width: 85%;
+  width: 88%;
   margin: 0 auto;
 }
 
@@ -113,6 +113,10 @@ input {
       flex-grow: 1;
       padding-left: 10px;
       padding-right: 12px;
+
+      &--line-through {
+        text-decoration: line-through;
+      }
     }
   }
 }
