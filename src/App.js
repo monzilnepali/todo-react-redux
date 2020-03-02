@@ -4,48 +4,17 @@ import './styles/style.scss'
 import { getDay, getMonth, getDate, getYear } from './utils/FormatDate'
 import Header from './components/Header'
 import Note from './components/Note'
-import { v1 as uuidv1 } from 'uuid';
-
+import AddNote from './components/AddNote';
+import { addTodo, deleteTodo, updateTodo } from './redux/Actions'
+import { connect } from 'react-redux'
 //initializing store 
 
 
 function App({ todoList, addTodo, deleteTodo, updateTodo }) {
 
-  const [input, setInput] = useState("");
+
   const [tab, setTab] = useState("home");
-
-  function addTodoHandler(event) {
-    console.log(event.key)
-    if (event.key == 'Enter') {
-
-      if (input != "") {
-        //ADDNOTE
-        addTodo({
-          status: false,
-          id: uuidv1(),
-          text: input
-        });
-        setInput("")
-      } else {
-        alert("empty field")
-      }
-
-    }
-  }
-
-  function inputChangeHandler(event) {
-    setInput(event.target.value)
-  }
-
-
   //delete note 
-  function deleteNoteHandler(todoid) {
-    deleteTodo(todoid)
-  }
-  function updateStatusHandler(todoid) {
-    console.log("update todo")
-    updateTodo(todoid)
-  }
 
   function filterTodo() {
 
@@ -83,9 +52,9 @@ function App({ todoList, addTodo, deleteTodo, updateTodo }) {
           <p> {getMonth() + " " + getDate() + ", " + getYear()}</p>
         </div>
         <div className="body">
-          <input type="text" placeholder="Add a note (Enter)" onKeyDown={addTodoHandler} value={input} onChange={inputChangeHandler} />
+          <AddNote />
           <div className="note-list">
-            {filterTodo().map(element => <Note data={element} key={element.id} deleteHandler={deleteNoteHandler} updateHandler={updateStatusHandler} />)}
+            {filterTodo().map(element => <Note data={element} key={element.id} />)}
           </div>
         </div>
       </div>
@@ -94,7 +63,14 @@ function App({ todoList, addTodo, deleteTodo, updateTodo }) {
 }
 
 
+const mapStateToProps = state => ({
+  todoList: state
+})
+const mapDispatchToProps = dispatch => ({
+  addTodo: todo => dispatch(addTodo(todo)),
+  deleteTodo: todoid => dispatch(deleteTodo(todoid)),
+  updateTodo: todoid => dispatch(updateTodo(todoid))
+})
 
 
-
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
