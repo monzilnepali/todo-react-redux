@@ -1,20 +1,33 @@
-
-export const reducer = (state = [], action) => {
+const initialization = {
+  todoList: [],
+  activeTab: 'HOME'
+}
+export const reducer = (state = initialization, action) => {
 
   switch (action.type) {
     case 'ADD_TODO':
-      state = [...state, action.todo];
+      console.log("adding todo")
+
+      // state = [...state.todoList, action.todo];
+      state = Object.assign({}, state, {
+        todoList: [...state.todoList, action.todo]
+      })
       break;
     case 'DELETE_TODO':
-      state = [...state.filter((todo) => todo.id !== action.todoid)];
+      state = Object.assign({}, state, {
+        todoList: [...state.todoList.filter((todo) => todo.id !== action.todoid)]
+      })
       break;
     case 'UPDATE_TODO':
-      state = [...state.map((todo) => {
-        if (todo.id == action.todoid) {
-          todo.status = !todo.status
-        }
-        return todo
-      })];
+      state = Object.assign({}, state, {
+        todoList: [...state.todoList.map((todo) => {
+          if (todo.id == action.todoid) {
+            todo.status = !todo.status
+          }
+          return todo
+        })]
+      })
+
       break;
     default:
       return state

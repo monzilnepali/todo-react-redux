@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 function AddNote({ addTodo }) {
   const [input, setInput] = useState("");
   function addTodoHandler(event) {
-    console.log(event.key)
     if (event.key == 'Enter') {
       if (input != "") {
         //ADDNOTE

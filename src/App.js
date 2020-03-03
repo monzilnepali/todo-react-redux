@@ -3,42 +3,16 @@ import React, { useState } from 'react';
 import './styles/style.scss'
 import { getDay, getMonth, getDate, getYear } from './utils/FormatDate'
 import Header from './components/Header'
-import Note from './components/Note'
 import AddNote from './components/AddNote';
 import { addTodo, deleteTodo, updateTodo } from './redux/Actions'
 import { connect } from 'react-redux'
+import TodoListContainer from './screen/TodoListContainer';
 //initializing store 
 
 
-function App({ todoList, addTodo, deleteTodo, updateTodo }) {
-
-
+function App({ addTodo, deleteTodo, updateTodo }) {
   const [tab, setTab] = useState("home");
   //delete note 
-
-  function filterTodo() {
-
-    return todoList.filter(element => {
-      switch (tab) {
-        case 'home':
-          return element;
-          break;
-        case 'completed':
-          if (element.status == true) {
-            return element
-          }
-          break;
-        case 'incompleted':
-          if (element.status == false) {
-            return element
-          }
-          break;
-        default:
-          return element
-      }
-
-    });
-  }
   function switchTab(tabid) {
     setTab(tabid)
   }
@@ -54,7 +28,7 @@ function App({ todoList, addTodo, deleteTodo, updateTodo }) {
         <div className="body">
           <AddNote />
           <div className="note-list">
-            {filterTodo().map(element => <Note data={element} key={element.id} />)}
+            <TodoListContainer />
           </div>
         </div>
       </div>
@@ -63,14 +37,14 @@ function App({ todoList, addTodo, deleteTodo, updateTodo }) {
 }
 
 
-const mapStateToProps = state => ({
-  todoList: state
-})
-const mapDispatchToProps = dispatch => ({
-  addTodo: todo => dispatch(addTodo(todo)),
-  deleteTodo: todoid => dispatch(deleteTodo(todoid)),
-  updateTodo: todoid => dispatch(updateTodo(todoid))
-})
+// const mapStateToProps = state => ({
+//   // todoList: state
+// })
+// const mapDispatchToProps = dispatch => ({
+//   addTodo: todo => dispatch(addTodo(todo)),
+//   deleteTodo: todoid => dispatch(deleteTodo(todoid)),
+//   updateTodo: todoid => dispatch(updateTodo(todoid))
+// })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
