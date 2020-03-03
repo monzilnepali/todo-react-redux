@@ -1,15 +1,12 @@
-import { getAllNote, addNote, deleteNote } from "../../services/note.services"
-import AddNote from "../../components/AddNote";
+import { getAllNote, addNote, deleteNote, updateNoteStatus } from "../../services/note.services"
 
 const apiMiddleware = store => next => action => {
 
   switch (action.type) {
     case 'FETCH_TODO_DATA':
-      console.log("fetch todo data called")
       next(action);
       // continue propagating the action
       getAllNote().then(res => {
-        console.log("result");
         //after getting data from server dispatch action to set data to store
         store.dispatch({
           type: 'SET_TODO_DATA',
@@ -18,11 +15,9 @@ const apiMiddleware = store => next => action => {
       })
       break;
     case 'ADD_TODO':
-      console.log("add todo")
       console.log(action.payload)
       next(action)
       addNote(action.payload).then(res => {
-        console.log("note added")
         //dispatch new aciotn
         store.dispatch(
           {
@@ -38,6 +33,18 @@ const apiMiddleware = store => next => action => {
         store.dispatch(
           {
             type: 'DELETE_TODO_SUCCEEDED',
+            payload: { todoid: action.payload }
+          }
+        )
+
+      })
+      break
+    case 'UPDATE_TODO':
+      next(action)
+      updateNoteStatus(action.payload).then(res => {
+        store.dispatch(
+          {
+            type: 'UPDATE_TODO_SUCCEEDED',
             payload: { todoid: action.payload }
           }
         )

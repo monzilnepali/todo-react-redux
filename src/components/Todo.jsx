@@ -19,9 +19,9 @@ function Todo({ data: todo, deleteTodo, updateTodo }) {
   return (
     <div className="note">
       <IconContext.Provider value={{ className: 'icon' }}>
-        {todo.status ? <MdCheckBox className="icon" onClick={updateStatusHandler} /> : <MdCheckBoxOutlineBlank onClick={updateStatusHandler} />}
+        {status ? <MdCheckBox className="icon" onClick={updateStatusHandler} /> : <MdCheckBoxOutlineBlank onClick={updateStatusHandler} />}
       </IconContext.Provider>
-      <p className={todo.status ? "text text--line-through" : 'text'}>{todo.title}</p>
+      <p className={status ? "text text--line-through" : 'text'}>{todo.title}</p>
       <IconContext.Provider value={{ className: 'icon' }}>
         <MdDelete onClick={deleteNoteHandler} />
       </IconContext.Provider>

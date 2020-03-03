@@ -43,17 +43,23 @@ const Todo = (state = initialization, action) => {
         isLoading: false,
         todoList: [...state.todoList.filter((todo) => todo._id !== action.payload.todoid)]
       }
-
     case 'UPDATE_TODO':
-      state = Object.assign({}, state, {
+      return {
+        ...state,
+        isLoading: true
+      }
+
+    case 'UPDATE_TODO_SUCCEEDED':
+      return {
+        ...state,
+        isLoading: false,
         todoList: [...state.todoList.map((todo) => {
-          if (todo.id == action.todoid) {
+          if (todo._id == action.payload.todoid) {
             todo.status = !todo.status
           }
           return todo
         })]
-      })
-      break;
+      }
     default:
       return state
   }

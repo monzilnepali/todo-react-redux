@@ -11,7 +11,6 @@ export const getRequest = (url) => {
   });
 }
 export const postRequest = (url, data) => {
-  console.log("postRequest");
   return http({
     method: 'POST',
     url, data
@@ -26,7 +25,6 @@ export const deleteRequest = (url) => {
 }
 
 export function putRequest(url, headers = "") {
-  console.log("update status request");
   return http({
     method: 'PUT',
     url
