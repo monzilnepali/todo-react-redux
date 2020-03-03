@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/monzilnepali.github.io/todo-react-redux/static/css/main.3b8674c8.chunk.css",
+    "main.js": "/monzilnepali.github.io/todo-react-redux/static/js/main.6c0c82ac.chunk.js",
+    "main.js.map": "/monzilnepali.github.io/todo-react-redux/static/js/main.6c0c82ac.chunk.js.map",
+    "runtime-main.js": "/monzilnepali.github.io/todo-react-redux/static/js/runtime-main.6ae5a82f.js",
+    "runtime-main.js.map": "/monzilnepali.github.io/todo-react-redux/static/js/runtime-main.6ae5a82f.js.map",
+    "static/js/2.661d18ec.chunk.js": "/monzilnepali.github.io/todo-react-redux/static/js/2.661d18ec.chunk.js",
+    "static/js/2.661d18ec.chunk.js.map": "/monzilnepali.github.io/todo-react-redux/static/js/2.661d18ec.chunk.js.map",
+    "index.html": "/monzilnepali.github.io/todo-react-redux/index.html",
+    "precache-manifest.f1a355f6b59e4fa001dc278198b28eda.js": "/monzilnepali.github.io/todo-react-redux/precache-manifest.f1a355f6b59e4fa001dc278198b28eda.js",
+    "service-worker.js": "/monzilnepali.github.io/todo-react-redux/service-worker.js",
+    "static/css/main.3b8674c8.chunk.css.map": "/monzilnepali.github.io/todo-react-redux/static/css/main.3b8674c8.chunk.css.map",
+    "static/js/2.661d18ec.chunk.js.LICENSE.txt": "/monzilnepali.github.io/todo-react-redux/static/js/2.661d18ec.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6ae5a82f.js",
+    "static/js/2.661d18ec.chunk.js",
+    "static/css/main.3b8674c8.chunk.css",
+    "static/js/main.6c0c82ac.chunk.js"
+  ]
+}
