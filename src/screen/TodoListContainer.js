@@ -1,19 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Todo from '../components/Todo'
-function TodoListContainer({ todoList }) {
+import { useLocation } from 'react-router-dom';
 
+function TodoListContainer({ todoList }) {
+  const location = useLocation().pathname;
   function filterTodo() {
     return todoList.filter(element => {
-      switch ("home") {
-        case 'home':
+      switch (location) {
+        case '/home':
           return element;
-        case 'completed':
+        case '/completed':
           if (element.status == true) {
             return element
           }
           break;
-        case 'incompleted':
+        case '/incomplete':
           if (element.status == false) {
             return element
           }
@@ -35,7 +37,7 @@ function TodoListContainer({ todoList }) {
 
 
 const mapStateToProps = state => ({
-  todoList: state.todoList,
+  todoList: state.Todo.todoList,
 })
 
 export default connect(mapStateToProps, null)(TodoListContainer);

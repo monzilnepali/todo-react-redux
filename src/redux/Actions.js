@@ -12,4 +12,8 @@ export const updateTodo = (todoid) => ({
   todoid
 });
 
+export const switchTab = (tab) => ({
+  type: "SWITCHTAB",
+  tab
+})
 //action are function that return type action to reducer

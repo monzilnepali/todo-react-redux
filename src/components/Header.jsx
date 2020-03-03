@@ -1,11 +1,17 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
-export default function Header({ handler }) {
+function Header() {
+
   return (
     <div className="nav">
-      <li className="nav__link nav__link--active" onClick={() => handler('home')}>Home</li>
-      <li className="nav__link" onClick={() => handler('completed')}>Completed</li>
-      <li className="nav__link" onClick={() => handler('incompleted')}>Remaining</li>
+
+      <NavLink className="nav__link" to="/home" activeClassName="nav__link--active">Home</NavLink>
+      <NavLink className="nav__link" to="/completed" activeClassName="nav__link--active">Completed</NavLink>
+      <NavLink className="nav__link" to="/incomplete" activeClassName="nav__link--active">Remaining</NavLink>
     </div>
   )
 }
+
+
+export default Header

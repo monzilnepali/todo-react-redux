@@ -1,14 +1,10 @@
 const initialization = {
-  todoList: [],
-  activeTab: 'HOME'
+  todoList: []
 }
-export const reducer = (state = initialization, action) => {
+const Todo = (state = initialization, action) => {
 
   switch (action.type) {
     case 'ADD_TODO':
-      console.log("adding todo")
-
-      // state = [...state.todoList, action.todo];
       state = Object.assign({}, state, {
         todoList: [...state.todoList, action.todo]
       })
@@ -27,10 +23,11 @@ export const reducer = (state = initialization, action) => {
           return todo
         })]
       })
-
       break;
     default:
       return state
   }
   return state;
 }
+
+export default Todo
