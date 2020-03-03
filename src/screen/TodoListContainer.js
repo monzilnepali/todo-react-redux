@@ -4,6 +4,8 @@ import Todo from '../components/Todo'
 import { useLocation } from 'react-router-dom';
 
 function TodoListContainer({ todoList }) {
+  console.log("todo list0");
+  console.log(todoList)
   const location = useLocation().pathname;
   function filterTodo() {
     return todoList.filter(element => {
@@ -29,7 +31,7 @@ function TodoListContainer({ todoList }) {
   return (
     <div>
       <div className="note-list">
-        {filterTodo().map(element => <Todo data={element} key={element.id} />)}
+        {filterTodo().map(element => <Todo data={element} key={element._id} />)}
       </div>
     </div>
   )
@@ -37,7 +39,7 @@ function TodoListContainer({ todoList }) {
 
 
 const mapStateToProps = state => ({
-  todoList: state.Todo.todoList,
+  todoList: state.todoList,
 })
 
 export default connect(mapStateToProps, null)(TodoListContainer);

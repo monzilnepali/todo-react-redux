@@ -1,19 +1,49 @@
 const initialization = {
-  todoList: []
+  todoList: [],
+  isLoading: false,
+  error: ''
+
 }
 const Todo = (state = initialization, action) => {
 
   switch (action.type) {
+    case 'FETCH_TODO_DATA':
+      return {
+        ...state,
+        isLoading: true
+      }
+    case 'SET_TODO_DATA':
+      return {
+        ...state,
+        isLoading: false,
+        todoList: action.payload.todoList,
+        error: ''
+      }
     case 'ADD_TODO':
-      state = Object.assign({}, state, {
-        todoList: [...state.todoList, action.todo]
-      })
-      break;
+      return {
+        ...state,
+        isLoading: true
+      }
+    case 'ADD_TODO_SUCCEEDED':
+      return {
+        ...state,
+        isLoading: false,
+        todoList: [...state.todoList, action.payload.todo]
+      }
+
     case 'DELETE_TODO':
-      state = Object.assign({}, state, {
-        todoList: [...state.todoList.filter((todo) => todo.id !== action.todoid)]
-      })
-      break;
+      return {
+        ...state,
+        isLoading: true
+      }
+    case 'DELETE_TODO_SUCCEEDED':
+      console.log("delete", action.payload.todoid)
+      return {
+        ...state,
+        isLoading: false,
+        todoList: [...state.todoList.filter((todo) => todo._id !== action.payload.todoid)]
+      }
+
     case 'UPDATE_TODO':
       state = Object.assign({}, state, {
         todoList: [...state.todoList.map((todo) => {
@@ -27,7 +57,7 @@ const Todo = (state = initialization, action) => {
     default:
       return state
   }
-  return state;
+
 }
 
 export default Todo

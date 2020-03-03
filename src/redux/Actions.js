@@ -1,19 +1,19 @@
 export const addTodo = (todo) => ({
   type: 'ADD_TODO',
-  todo
+  payload: todo
 });
 
 export const deleteTodo = (todoid) => ({
   type: 'DELETE_TODO',
-  todoid
+  payload: todoid
 })
 export const updateTodo = (todoid) => ({
   type: 'UPDATE_TODO',
-  todoid
+  payload: todoid
 });
 
-export const switchTab = (tab) => ({
-  type: "SWITCHTAB",
-  tab
+export const fetchTodo = () => ({
+  type: 'FETCH_TODO_DATA'
 })
+
 //action are function that return type action to reducer

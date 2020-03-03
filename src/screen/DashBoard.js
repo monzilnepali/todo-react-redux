@@ -6,7 +6,6 @@ import TodoListContainer from '../screen/TodoListContainer';
 import { useLocation } from 'react-router-dom';
 
 export default function DashBoard() {
-  console.log("dash baord called")
   return (
     <div className="container">
       <div className="wrapper">

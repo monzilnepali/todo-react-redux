@@ -9,11 +9,10 @@ function Todo({ data: todo, deleteTodo, updateTodo }) {
 
   const [status, setStatus] = useState(todo.status);
   function deleteNoteHandler() {
-
-    deleteTodo(todo.id)
+    deleteTodo(todo._id)
   }
   function updateStatusHandler() {
-    updateTodo(todo.id)
+    updateTodo(todo._id)
     setStatus(!status)
   }
 
@@ -22,7 +21,7 @@ function Todo({ data: todo, deleteTodo, updateTodo }) {
       <IconContext.Provider value={{ className: 'icon' }}>
         {todo.status ? <MdCheckBox className="icon" onClick={updateStatusHandler} /> : <MdCheckBoxOutlineBlank onClick={updateStatusHandler} />}
       </IconContext.Provider>
-      <p className={todo.status ? "text text--line-through" : 'text'}>{todo.text}</p>
+      <p className={todo.status ? "text text--line-through" : 'text'}>{todo.title}</p>
       <IconContext.Provider value={{ className: 'icon' }}>
         <MdDelete onClick={deleteNoteHandler} />
       </IconContext.Provider>
