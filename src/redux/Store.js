@@ -5,7 +5,7 @@ import { loadTodo, saveTodo } from "../utils/LocalStorage";
 //getting data from localstorage and initialize store with that data
 const initialState = loadTodo()
 console.log("inital state", initialState)
-const store = createStore(TodoReducer, initialState)
+const store = createStore(TodoReducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 //to update the localstorage everytime there is change in store
 //we basically using subscribe to store to update localstorage when store is change
