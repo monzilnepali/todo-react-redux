@@ -1,7 +1,7 @@
 const initialization = {
   todoList: []
 }
-const Todo = (state = initialization, action) => {
+export const Todo = (state = initialization, action) => {
 
   switch (action.type) {
     case 'ADD_TODO':
@@ -30,4 +30,3 @@ const Todo = (state = initialization, action) => {
   return state;
 }
 
-export default Todo

@@ -37,7 +37,7 @@ function TodoListContainer({ todoList }) {
 
 
 const mapStateToProps = state => ({
-  todoList: state.Todo.todoList,
+  todoList: state.todoList,
 })
 
 export default connect(mapStateToProps, null)(TodoListContainer);
