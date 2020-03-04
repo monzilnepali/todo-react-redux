@@ -9,9 +9,7 @@ function AddNote({ addTodo }) {
       if (input != "") {
         //ADDNOTE
         addTodo({
-          status: false,
-          id: uuidv1(),
-          text: input
+          title: input
         });
         setInput("")
       } else {
