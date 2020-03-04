@@ -95,6 +95,40 @@ Data flow of redux
   every listener subscribe to store will be invoked and listener may call getState to get new state tree
 
 
+//* redux middleware
+  //* async
 
+Middleware:
+
+-->it provide third party point between dispatching action and moment it reach the reducer
+//* action_creator->action->middlware->reducer->store
+
+-->middleware work similar as in express middleware do.
+-->someway between action and reducer,the middleware intercept the action object before reducer  and
+   it give functionality to perform additional action with respect ot the action dispatched
+
+--> for eg:if you want to fetch data from server which is /(async) we cannot fetch data from reducer because
+   redux reducer must be synchronous.
+--> for this async functionality we use middleware which we fetch data from server and then send data to reducer
+
+//* basic syntax of redux middleware
+    const fn=store=>next=>action=>{
+        next(action)
+    }
+
+  middleware args:
+   1.store=>current store state
+   2.action=>action dispatched
+   3.next()
+
+-->next():it function which allow middleware to async and call next() after current middleware execution completed
+   next() function is middleware flow control mechanism.you can call next() aynchronously or event not also.
+
+   e.g const fn=store=>next=>action=>{
+         fetch(data).then(res=>{
+            action.payload=res
+            next(action)
+         })
+   }
 
 */
