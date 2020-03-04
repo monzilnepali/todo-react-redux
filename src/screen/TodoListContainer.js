@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Todo from '../components/Todo'
 import { useLocation } from 'react-router-dom';
 import { deleteTodo, updateTodo } from '../redux/Actions'
+import { bindActionCreators } from 'redux';
 
 function TodoListContainer({ todoList, updateTodo, deleteTodo }) {
   const location = useLocation().pathname;
@@ -47,8 +48,9 @@ const mapStateToProps = state => ({
   todoList: state.todoList,
 })
 const mapDispatchToProps = dispatch => ({
-  deleteTodo: todoid => dispatch(deleteTodo(todoid)),
-  updateTodo: todoid => dispatch(updateTodo(todoid))
+  updateTodo: bindActionCreators(updateTodo, dispatch),
+  deleteTodo: bindActionCreators(deleteTodo, dispatch)
+
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoListContainer);

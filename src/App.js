@@ -4,15 +4,13 @@ import './styles/style.scss'
 import DashBoard from './screen/DashBoard';
 import { fetchTodo } from './redux/Actions';
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
 //initializing store 
 
 function App({ fetchTodo }) {
 
   useEffect(() => {
-    console.log("component did mount")
     fetchTodo()
-    console.log("fetch do caled")
-
   }, [])
 
   return (
@@ -29,6 +27,6 @@ function App({ fetchTodo }) {
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchTodo: () => dispatch(fetchTodo())
+  fetchTodo: bindActionCreators(fetchTodo, dispatch)
 })
 export default connect(null, mapDispatchToProps)(App);

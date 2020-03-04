@@ -1,18 +1,12 @@
 import { getAllNote, addNote, deleteNote, updateNoteStatus } from "../../services/note.services"
 
+import { FETCH_TODO_DATA } from '../Actions'
 const apiMiddleware = store => next => action => {
 
   switch (action.type) {
-    case 'FETCH_TODO_DATA':
-      next(action);
-      // continue propagating the action
-      getAllNote().then(res => {
-        //after getting data from server dispatch action to set data to store
-        store.dispatch({
-          type: 'SET_TODO_DATA',
-          payload: { todoList: res.data }
-        })
-      })
+    case FETCH_TODO_DATA:
+
+
       break;
     case 'ADD_TODO':
       console.log(action.payload)

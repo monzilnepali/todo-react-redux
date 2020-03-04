@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { v1 as uuidv1 } from 'uuid';
 import { addTodo } from '../redux/Actions'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
 function AddNote({ addTodo }) {
   const [input, setInput] = useState("");
   function addTodoHandler(event) {
@@ -29,7 +30,7 @@ function AddNote({ addTodo }) {
 }
 
 const mapDispatchToProps = dispatch => ({
-  addTodo: todo => dispatch(addTodo(todo))
+  addTodo: bindActionCreators(addTodo, dispatch)
 })
 
 export default connect(null, mapDispatchToProps)(AddNote);

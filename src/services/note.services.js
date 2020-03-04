@@ -1,6 +1,6 @@
 import { getRequest, postRequest, putRequest, deleteRequest } from '../config/axios.config'
 
-export const addNote = (note) => {
+export const addTodoReq = (note) => {
   return postRequest('/note/addnote', note);
 }
 
@@ -8,10 +8,10 @@ export const getAllNote = () => {
   return getRequest('/note/getallnote');
 }
 
-export const deleteNote = (noteId) => {
+export const deleteNoteReq = (noteId) => {
   return deleteRequest('/note/delete/' + noteId);
 }
 
-export const updateNoteStatus = (noteId) => {
+export const updateTodoStatusReq = (noteId) => {
   return putRequest('/note/updatestatus/' + noteId);
 }
