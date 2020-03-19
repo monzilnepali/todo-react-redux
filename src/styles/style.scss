@@ -37,7 +37,7 @@ body {
   background-color: $background-color-light;
   border-radius: 5px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
 
 .nav {
@@ -108,12 +108,12 @@ input {
 
 .note-list {
   margin-top: 40px;
-  height: 300px;
-  max-height: 300px;
+  height: 290px;
+  max-height: 290px;
   overflow-y: auto;
 
   .note {
-    height: 40px;
+    height: 45px;
     color: white;
     display: flex;
     align-items: center;
@@ -135,4 +135,27 @@ input {
 .icon {
   font-size: 25px;
   cursor: pointer;
+}
+
+
+// custom scroll bar
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $accent-color;
+  border-radius: 5px;
+
 }

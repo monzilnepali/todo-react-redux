@@ -4,7 +4,7 @@ const initialization = {
   error: ''
 
 }
-const Todo = (state = initialization, action) => {
+export const Todo = (state = initialization, action) => {
 
   switch (action.type) {
     case 'FETCH_TODO_DATA':
@@ -66,4 +66,3 @@ const Todo = (state = initialization, action) => {
 
 }
 
-export default Todo

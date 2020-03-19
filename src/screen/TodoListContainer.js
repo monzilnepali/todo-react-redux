@@ -49,6 +49,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   deleteTodo: todoid => dispatch(deleteTodo(todoid)),
   updateTodo: todoid => dispatch(updateTodo(todoid))
+
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoListContainer);

@@ -1,18 +1,23 @@
-import { createStore, applyMiddleware, compose } from "redux";
-import reducer from './Reducers/Todo'
 
-import loggingMiddleware from './Middleware/log.middleware'
-import apiMiddleware from './Middleware/api.middleware'
+import { createStore } from "redux";
+import { Todo as TodoReducer } from './Reducers/Todo'
+import { loadTodo, saveTodo } from "../utils/LocalStorage";
 
-const composeEnhancers = typeof window === 'object' &&
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-    // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-  }) : compose;
+//getting data from localstorage and initialize store with that data
+const initialState = loadTodo()
+console.log("inital state", initialState)
+const store = createStore(TodoReducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
-const enhancer = composeEnhancers(
-  applyMiddleware(loggingMiddleware, apiMiddleware)
-)
+//to update the localstorage everytime there is change in store
+//we basically using subscribe to store to update localstorage when store is change
+console.log(store.getState())
+store.subscribe(() => {
+  saveTodo({
+    todoList: store.getState().todoList
+  }
+  )
+})
+
+export default store;
 
 
-export const store = createStore(reducer, enhancer);
