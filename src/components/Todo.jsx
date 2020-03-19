@@ -1,39 +1,22 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { IconContext } from "react-icons";
 import { MdCheckBox, MdCheckBoxOutlineBlank, MdDelete } from "react-icons/md";
-import { deleteTodo, updateTodo } from '../redux/Actions'
-import { connect } from 'react-redux'
 
-
-function Todo({ data: todo, deleteTodo, updateTodo }) {
-
-  const [status, setStatus] = useState(todo.status);
-  function deleteNoteHandler() {
-
-    deleteTodo(todo.id)
-  }
-  function updateStatusHandler() {
-    updateTodo(todo.id)
-    setStatus(!status)
-  }
-
+function Todo({ data: todo, deleteTodoHandler, updateTodoHandler }) {
   return (
     <div className="note">
       <IconContext.Provider value={{ className: 'icon' }}>
-        {todo.status ? <MdCheckBox className="icon" onClick={updateStatusHandler} /> : <MdCheckBoxOutlineBlank onClick={updateStatusHandler} />}
+        {todo.status ? <MdCheckBox className="icon" onClick={() => updateTodoHandler(todo._id)} /> : <MdCheckBoxOutlineBlank onClick={() => updateTodoHandler(todo._id)} />}
       </IconContext.Provider>
-      <p className={todo.status ? "text text--line-through" : 'text'}>{todo.text}</p>
+      <p className={todo.status ? "text text--line-through" : 'text'}>{todo.title}</p>
       <IconContext.Provider value={{ className: 'icon' }}>
-        <MdDelete onClick={deleteNoteHandler} />
+        <MdDelete onClick={() => deleteTodoHandler(todo._id)} />
       </IconContext.Provider>
 
     </div >
   )
 }
-const mapDispatchToProps = dispatch => ({
-  deleteTodo: todoid => dispatch(deleteTodo(todoid)),
-  updateTodo: todoid => dispatch(updateTodo(todoid))
-})
 
 
-export default connect(null, mapDispatchToProps)(Todo);
+
+export default Todo;
