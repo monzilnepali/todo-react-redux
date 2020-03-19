@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/monzilnepali.github.io/todo-react-redux/precache-manifest.f1a355f6b59e4fa001dc278198b28eda.js"
+  "/monzilnepali.github.io/todo-react-redux/precache-manifest.f5bb5fc36a7dc5948a2d5a0b6be7ef62.js"
 );
 
 self.addEventListener('message', (event) => {
@@ -35,5 +35,5 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
 workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/monzilnepali.github.io/todo-react-redux/index.html"), {
   
-  blacklist: [/^\/_/,/\/[^\/?]+\.[^\/]+$/],
+  blacklist: [/^\/_/,/\/[^/?]+\.[^/]+$/],
 });
